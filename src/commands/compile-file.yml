@@ -17,6 +17,7 @@ steps:
       #   PARAM_TO: <<parameters.to>>
       name: Compile C/C++ file into Wasm
       command: |
+        mkdir -p /tmp/output
         emcc << parameters.file >> -o /tmp/output/out.wasm << parameters.flags >>
   # - persist_to_workspace:
   - store_artifacts:
