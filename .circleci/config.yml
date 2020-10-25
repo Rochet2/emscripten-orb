@@ -24,19 +24,20 @@ parameters:
 
 jobs:
   # Define one or more jobs which will utilize your orb's commands and parameters to validate your changes.
-  - integration-test-1:
-      executor:
-        name: emscripten-orb/emscripten
-        tag: '2.0.7'
-      steps:
-        - checkout
-        - emscripten-orb/compile-file:
-            file: "src/tests/hello.c"
-            flags: "-Os"
-  - emscripten-orb/compile-file:
+  integration-test-1:
+    executor:
+      name: emscripten-orb/emscripten
       tag: '2.0.7'
-      file: "src/tests/hello.c"
-      flags: "-Os"
+    steps:
+      - checkout
+      - emscripten-orb/compile-file:
+          file: "src/tests/hello.c"
+          flags: "-Os"
+  # emscripten-orb/compile-file:
+  #   parameters:
+  #     tag: '2.0.7'
+  #     file: "src/tests/hello.c"
+  #     flags: "-Os"
 
 workflows:
   # Prior to producing a development orb (which requires credentials) basic validation, linting, and even unit testing can be performed.
