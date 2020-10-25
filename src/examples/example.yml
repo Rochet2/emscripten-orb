@@ -1,13 +1,16 @@
 description: >
-  Sample example description.
+  Compile a C source file to Wasm using given flags .
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    emscripten-orb: rochet2/emscripten-orb@latest
   workflows:
-    use-my-orb:
+    compile-wasm:
       jobs:
-        - <orb-name>/<job-name>
+        - emscripten-orb/compile-file:
+            tag: "2.0.7"
+            file: /path/to/file.c
+            flags: "-Os"

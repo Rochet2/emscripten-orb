@@ -1,0 +1,11 @@
+description: >
+  Preinstalled emscripten environment to be used as executor.
+docker:
+  - image: 'emscripten/emsdk:<<parameters.tag>>'
+parameters:
+  tag:
+    # default: latest
+    description: >
+      Pick a specific emscripten version:
+      https://hub.docker.com/r/emscripten/emsdk/tags
+    type: string

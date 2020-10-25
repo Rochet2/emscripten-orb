@@ -1,0 +1,29 @@
+description: >
+  Compile a C or C++ file into Wasm.
+# What will this job do?
+# Descriptions should be short, simple, and clear.
+
+executor:
+  name: emscripten
+  tag: << parameters.tag >>
+
+parameters:
+  tag:
+    type: string
+    # default: "World"
+    description: >
+      Pick a specific emscripten version:
+      https://hub.docker.com/r/emscripten/emsdk/tags
+  file:
+    type: string
+    # default: "World"
+    description: "File to compile"
+  flags:
+    type: string
+    default: ""
+    description: "Emscripten toolchain flags, such as '-Os -s SIDE_MODULE=1'"
+steps:
+  - checkout
+  - compile-file:
+      file: << parameters.file >>
+      flags: << parameters.flags >>

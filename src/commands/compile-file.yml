@@ -1,0 +1,23 @@
+description: >
+  Compile a C or C++ file into Wasm.
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+parameters:
+  file:
+    type: string
+    # default: "World"
+    description: "File to compile"
+  flags:
+    type: string
+    default: ""
+    description: "Emscripten toolchain flags, such as '-Os -s SIDE_MODULE=1'"
+steps:
+  - run:
+      # environment:
+      #   PARAM_TO: <<parameters.to>>
+      name: Compile C/C++ file into Wasm
+      command: |
+        emcc << parameters.file >> -o /tmp/output/out.wasm << parameters.flags >>
+  # - persist_to_workspace:
+  - store_artifacts:
+      path: /tmp/output/
