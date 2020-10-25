@@ -5,6 +5,7 @@
 
 
 CircleCI orb that helps compiling C and C++ code to Wasm / WebAssembly with emscripten toolchain.
+The compiled files are stored as artifacts.
 
 Build, test, and publish orbs automatically on CircleCI with [Orb-Tools](https://circleci.com/orbs/registry/orb/circleci/orb-tools).
 
