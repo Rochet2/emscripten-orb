@@ -1,0 +1,23 @@
+description: >
+  Compile a C source file to Wasm using given flags with a command.
+# Provide a use-case based example for using this orb.
+# Everything in the `usage` section will be displayed in the orb registry.
+# Comments are not retained.
+usage:
+  version: 2.1
+  orbs:
+    emscripten-orb: rochet2/emscripten-orb@1
+  workflows:
+    compile-wasm:
+      jobs:
+        - C-to-Wasm:
+            executor:
+              name: emscripten-orb/emscripten
+              tag: '2.0.7'
+            steps:
+              - checkout
+              - run: echo 'Do custom steps before compiling'
+              - emscripten-orb/compile-file:
+                  file: "src/tests/hello.c"
+                  flags: "-Os"
+              - run: echo 'Do custom steps after compiling'

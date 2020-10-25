@@ -1,12 +1,12 @@
 description: >
-  Compile a C source file to Wasm using given flags .
+  Compile a C source file to Wasm using given flags with predefined job.
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
 usage:
   version: 2.1
   orbs:
-    emscripten-orb: rochet2/emscripten-orb@latest
+    emscripten-orb: rochet2/emscripten-orb@1
   workflows:
     compile-wasm:
       jobs:
